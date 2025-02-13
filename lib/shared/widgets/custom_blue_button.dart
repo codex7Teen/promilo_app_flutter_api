@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:promilo_flutter_app/core/config/app_colors.dart';
+import 'package:promilo_flutter_app/core/config/app_text_styles.dart';
 
 class CustomBlueButton extends StatelessWidget {
   final String buttonText;
@@ -16,10 +17,7 @@ class CustomBlueButton extends StatelessWidget {
       child: Center(
           child: Text(
         buttonText,
-        style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: AppColors.whiteColor,
-            fontSize: 17),
+        style: AppTextStyles.buttonText,
       )),
     );
   }
