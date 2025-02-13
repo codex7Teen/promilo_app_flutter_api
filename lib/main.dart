@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:promilo_flutter_app/core/config/app_colors.dart';
 import 'package:promilo_flutter_app/features/auth/presentation/screens/login_screen.dart';
 
 void main() {
@@ -13,9 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Promilo_Flutter_App',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme:
+              ColorScheme.fromSeed(seedColor: AppColors.darkBlueThemeColor),
           useMaterial3: true,
         ),
-        home: const ScreenLogin());
+        home: ScreenLogin());
   }
 }
