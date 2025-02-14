@@ -1,9 +1,7 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
-import 'package:promilo_flutter_app/core/config/app_colors.dart';
 import 'package:promilo_flutter_app/data/models/login_model.dart';
 import 'package:promilo_flutter_app/data/services/auth_services.dart';
 import 'package:promilo_flutter_app/features/home/presentation/screen/home_screen.dart';

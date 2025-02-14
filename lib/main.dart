@@ -1,14 +1,22 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:promilo_flutter_app/core/config/app_colors.dart';
 import 'package:promilo_flutter_app/features/auth/presentation/screens/login_screen.dart';
+import 'package:promilo_flutter_app/features/home/presentation/screen/home_screen.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final secureStorage = FlutterSecureStorage();
+  final token = await secureStorage.read(key: "access_token");
+  runApp(MyApp(isLoggedIn: token != null));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final bool isLoggedIn;
+  const MyApp({super.key, required this.isLoggedIn});
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +28,6 @@ class MyApp extends StatelessWidget {
               ColorScheme.fromSeed(seedColor: AppColors.darkBlueThemeColor),
           useMaterial3: true,
         ),
-        home: ScreenLogin());
+        home: isLoggedIn ? ScreenHome() : ScreenLogin());
   }
 }
