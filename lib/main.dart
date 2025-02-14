@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:promilo_flutter_app/core/config/app_colors.dart';
 import 'package:promilo_flutter_app/features/auth/presentation/screens/login_screen.dart';
 
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Promilo_Flutter_App',
         theme: ThemeData(

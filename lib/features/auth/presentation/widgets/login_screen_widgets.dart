@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:promilo_flutter_app/core/config/app_colors.dart';
 import 'package:promilo_flutter_app/core/config/app_text_styles.dart';
+import 'package:promilo_flutter_app/features/auth/controller/auth_controller.dart';
 import 'package:promilo_flutter_app/shared/widgets/custom_auth_text_field.dart';
 import 'package:promilo_flutter_app/shared/widgets/custom_blue_button.dart';
 
@@ -31,9 +34,19 @@ class LoginScreenWidgets {
     );
   }
 
-  static Widget buildEmailField(TextEditingController emailController) {
+  static Widget buildEmailField(
+      TextEditingController emailController, Function(String) onChanged) {
     return CustomAuthTextField(
-        hintText: 'Enter Email or Mob No.', controller: emailController);
+      validator: (email) {
+        if (email == null && email!.isEmpty) {
+          return "Enter a valid email";
+        }
+        return null;
+      },
+      hintText: 'Enter Email or Mob No.',
+      controller: emailController,
+      onChanged: onChanged,
+    );
   }
 
   static Widget buildSignInWithotpText() {
@@ -57,9 +70,12 @@ class LoginScreenWidgets {
   }
 
   static Widget buildPasswordInputField(
-      TextEditingController passwordController) {
+      TextEditingController passwordController, Function(String)? onChanged) {
     return CustomAuthTextField(
-        hintText: 'Enter Password', controller: passwordController);
+      hintText: 'Enter Password',
+      controller: passwordController,
+      onChanged: onChanged,
+    );
   }
 
   static Widget buildRememberMeandForgotPasswordText() {
@@ -91,8 +107,16 @@ class LoginScreenWidgets {
     );
   }
 
-  static Widget buildSubmitButton() {
-    return CustomBlueButton(buttonText: 'Submit');
+  static Widget buildSubmitButton(AuthController authController) {
+    return CustomBlueButton(
+      buttonText: 'Submit',
+      isButtonClickable: authController.isButtonEnabled.value,
+      // login user
+      onTap: () => authController.isButtonEnabled.value
+          ? authController.loginUser()
+          : null,
+          isLoading: authController.isLoading.value,
+    );
   }
 
   static Widget buildOrDivider() {

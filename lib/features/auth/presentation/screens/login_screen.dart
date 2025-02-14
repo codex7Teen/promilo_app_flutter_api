@@ -1,13 +1,15 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:promilo_flutter_app/core/config/app_colors.dart';
+import 'package:promilo_flutter_app/features/auth/controller/auth_controller.dart';
 import 'package:promilo_flutter_app/features/auth/presentation/widgets/login_screen_widgets.dart';
 
 class ScreenLogin extends StatelessWidget {
   ScreenLogin({super.key});
-
-  final TextEditingController _emailController = TextEditingController();
-
-  final TextEditingController _passwordController = TextEditingController();
+  //! DEPENDENCY INJECTION (INJECTING AUTH CONTROLLER)
+  final AuthController authController = Get.put(AuthController());
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +25,17 @@ class ScreenLogin extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(height: MediaQuery.sizeOf(context).height * 0.04),
               //! WELCOME TEXT
               LoginScreenWidgets.buildWelcomeText(),
-              SizedBox(height: 34),
+              SizedBox(height: 50),
               //! SIGN IN TEXT
               LoginScreenWidgets.buildSignInText(),
               SizedBox(height: 6),
               //! EMAIL INPUT FIELD
-              LoginScreenWidgets.buildEmailField(_emailController),
+              LoginScreenWidgets.buildEmailField(
+                  authController.emailController,
+                  (value) => authController.updateEmail(value)),
               SizedBox(height: 6),
               //! SIGN IN WITH OTP TEXT
               LoginScreenWidgets.buildSignInWithotpText(),
@@ -39,13 +44,16 @@ class ScreenLogin extends StatelessWidget {
               LoginScreenWidgets.buildPasswordText(),
               SizedBox(height: 6),
               //! PASSWORD INPUT FIELD
-              LoginScreenWidgets.buildPasswordInputField(_passwordController),
+              LoginScreenWidgets.buildPasswordInputField(
+                authController.passwordController,
+                (value) => authController.updatePassword(value),
+              ),
               SizedBox(height: 10),
               //! REMEMBER ME & FORGOT PASSWORD TEXT
               LoginScreenWidgets.buildRememberMeandForgotPasswordText(),
               SizedBox(height: 30),
               //! SUBMIT BUTTON
-              LoginScreenWidgets.buildSubmitButton(),
+              Obx(() => LoginScreenWidgets.buildSubmitButton(authController)),
               SizedBox(height: 26),
               //! OR DIVIDER
               LoginScreenWidgets.buildOrDivider(),
@@ -59,7 +67,7 @@ class ScreenLogin extends StatelessWidget {
               //! LOGIN & SIGNUP TEXT
               LoginScreenWidgets.buildLoginAndSignupText(),
               SizedBox(height: 28),
-
+          
               LoginScreenWidgets.builAgreeText(),
               LoginScreenWidgets.buildAgreeSecondText()
             ],
