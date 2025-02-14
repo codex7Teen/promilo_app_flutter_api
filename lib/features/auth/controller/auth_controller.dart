@@ -68,8 +68,7 @@ class AuthController extends GetxController {
     } else {
       log('CONTROL: ERROR');
       Get.snackbar("Error", "Invalid email or password",
-          snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: Colors.red);
+          snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.red);
     }
   }
 

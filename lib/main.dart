@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
@@ -10,11 +8,13 @@ import 'package:promilo_flutter_app/features/home/presentation/screen/home_scree
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final secureStorage = FlutterSecureStorage();
+  // read accesstoken from secure storage
   final token = await secureStorage.read(key: "access_token");
   runApp(MyApp(isLoggedIn: token != null));
 }
 
 class MyApp extends StatelessWidget {
+  // Bool to check accesstoken is null or not
   final bool isLoggedIn;
   const MyApp({super.key, required this.isLoggedIn});
 
