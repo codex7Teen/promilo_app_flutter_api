@@ -63,8 +63,10 @@ class AuthController extends GetxController {
           key: "access_token", value: loginResponse.accessToken);
       log('CONTROL: TOKEN SAVE SUCCESS. TOKEN: ${loginResponse.accessToken}');
 
-      // Navigate to home screen on login success
+      // Navigate to home screen on login success and also show snackbar
       Get.offAll(() => ScreenHome());
+      Get.snackbar("Login Success", "Successfully Logged In... 🎉🎉🎉",
+          snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.white);
     } else {
       log('CONTROL: ERROR');
       Get.snackbar("Error", "Invalid email or password",
