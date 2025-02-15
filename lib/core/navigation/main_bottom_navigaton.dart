@@ -26,7 +26,7 @@ class MainBottomNavigaton extends StatelessWidget {
   }
 
   // screens list
-  static const List<Widget> screens = [ScreenHome()];
+  static List<Widget> screens = [ScreenHome()];
 
   // bottom navbar images
   static const List<String> navBarImages = [
