@@ -15,7 +15,8 @@ class AppTextStyles {
       fontSize: 21,
       color: AppColors.darkBlueThemeColor);
 
-  static const TextStyle promiloText = TextStyle(fontWeight: FontWeight.bold);
+  static const TextStyle promiloText = TextStyle(
+      fontWeight: FontWeight.bold, color: AppColors.darkBlueThemeColor);
 
   static const TextStyle rememberMeText =
       TextStyle(color: AppColors.darkGreyColor, fontSize: 16.2);

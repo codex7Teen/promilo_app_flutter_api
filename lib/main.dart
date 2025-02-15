@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:promilo_flutter_app/core/config/app_colors.dart';
+import 'package:promilo_flutter_app/core/navigation/main_bottom_navigaton.dart';
 import 'package:promilo_flutter_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:promilo_flutter_app/features/home/presentation/screen/home_screen.dart';
 
@@ -28,6 +29,6 @@ class MyApp extends StatelessWidget {
               ColorScheme.fromSeed(seedColor: AppColors.darkBlueThemeColor),
           useMaterial3: true,
         ),
-        home: isLoggedIn ? ScreenHome() : ScreenLogin());
+        home: isLoggedIn ? MainBottomNavigaton() : ScreenLogin());
   }
 }
