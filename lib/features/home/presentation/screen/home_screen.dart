@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:promilo_flutter_app/core/config/app_colors.dart';
+import 'package:promilo_flutter_app/features/description/presentation/screens/description_screen.dart';
 import 'package:promilo_flutter_app/features/home/controller/home_screen_controller.dart';
 import 'package:promilo_flutter_app/features/home/presentation/widgets/home_screen_widgets.dart';
 
@@ -67,29 +68,40 @@ class ScreenHome extends StatelessWidget {
                   shrinkWrap: true,
                   itemCount: 4,
                   itemBuilder: (context, index) {
-                    return Container(
-                        width: MediaQuery.sizeOf(context).width * 0.4,
-                        margin: EdgeInsets.only(right: 20),
-                        child: Stack(
-                          fit: StackFit.expand,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Image.asset(
-                                  'assets/images/ducati-devil-eyes.jpg',
-                                  fit: BoxFit.cover),
-                            ),
-                            Positioned(
-                              right: 0,
-                              bottom: 0,
-                              child: Container(
-                                padding: EdgeInsets.symmetric(vertical: 3, horizontal: 5),
-                                decoration: BoxDecoration(color: AppColors.whiteColor, borderRadius: BorderRadius.circular(10)),
-                                child: Text("0${index + 1}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),),
+                    return GestureDetector(
+                      onTap: () => Get.to(ScreenDescription()),
+                      child: Container(
+                          width: MediaQuery.sizeOf(context).width * 0.4,
+                          margin: EdgeInsets.only(right: 20),
+                          child: Stack(
+                            fit: StackFit.expand,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Image.asset(
+                                    'assets/images/ducati-devil-eyes.jpg',
+                                    fit: BoxFit.cover),
                               ),
-                            )
-                          ],
-                        ));
+                              Positioned(
+                                right: 0,
+                                bottom: 0,
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 3, horizontal: 5),
+                                  decoration: BoxDecoration(
+                                      color: AppColors.whiteColor,
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: Text(
+                                    "0${index + 1}",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 40),
+                                  ),
+                                ),
+                              )
+                            ],
+                          )),
+                    );
                   },
                 ),
               )
