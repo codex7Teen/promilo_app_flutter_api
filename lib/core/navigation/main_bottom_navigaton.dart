@@ -3,12 +3,13 @@ import 'package:promilo_flutter_app/core/config/app_colors.dart';
 import 'package:promilo_flutter_app/features/home/presentation/screen/home_screen.dart';
 
 class MainBottomNavigaton extends StatelessWidget {
-  const MainBottomNavigaton({super.key});
+  final Widget? child;
+  const MainBottomNavigaton({super.key, this.child});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[0],
+      body: child ?? screens[0],
       bottomNavigationBar: BottomNavigationBar(
           backgroundColor: AppColors.whiteColor,
           type: BottomNavigationBarType.fixed,

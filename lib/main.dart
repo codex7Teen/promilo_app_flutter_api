@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:promilo_flutter_app/core/config/app_colors.dart';
 import 'package:promilo_flutter_app/core/navigation/main_bottom_navigaton.dart';
 import 'package:promilo_flutter_app/features/auth/presentation/screens/login_screen.dart';
-import 'package:promilo_flutter_app/features/home/presentation/screen/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

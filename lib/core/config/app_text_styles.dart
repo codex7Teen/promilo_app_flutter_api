@@ -23,4 +23,12 @@ class AppTextStyles {
 
   static const TextStyle buttonText = TextStyle(
       fontWeight: FontWeight.bold, color: AppColors.whiteColor, fontSize: 17);
+
+  static const TextStyle descriptionSubtext =
+      TextStyle(fontSize: 15.5, color: AppColors.darkGreyColor);
+
+  static const TextStyle descriptionHeadingstext = TextStyle(
+      color: AppColors.darkBlueThemeColor,
+      fontSize: 18,
+      fontWeight: FontWeight.w500);
 }

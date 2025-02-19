@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:promilo_flutter_app/core/config/app_colors.dart';
 import 'package:promilo_flutter_app/core/config/app_text_styles.dart';
+import 'package:promilo_flutter_app/core/navigation/main_bottom_navigaton.dart';
+import 'package:promilo_flutter_app/features/description/presentation/screens/description_screen.dart';
 import 'package:promilo_flutter_app/features/home/controller/home_screen_controller.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -214,6 +216,67 @@ class HomeScreenWidgets {
                 )
               ],
             ),
+          );
+        },
+      ),
+    );
+  }
+
+  static trendingMeetupHeading() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 6),
+      child: Text(
+        'Top Trending Meetups',
+        style: TextStyle(
+          color: AppColors.darkBlueThemeColor,
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
+
+  static buildToptrendinMeetupCards() {
+    return SizedBox(
+      height: 150,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
+        itemCount: 4,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap: () =>
+                // Displaying on the body of bottomnavbar to preserve the bottomnavbar.
+                Get.to(MainBottomNavigaton(child: ScreenDescription())),
+            child: Container(
+                width: MediaQuery.sizeOf(context).width * 0.4,
+                margin: EdgeInsets.only(right: 20),
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.asset('assets/images/ducati-devil-eyes.jpg',
+                          fit: BoxFit.cover),
+                    ),
+                    Positioned(
+                      right: 0,
+                      bottom: 0,
+                      child: Container(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 3, horizontal: 5),
+                        decoration: BoxDecoration(
+                            color: AppColors.whiteColor,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Text(
+                          "0${index + 1}",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 40),
+                        ),
+                      ),
+                    )
+                  ],
+                )),
           );
         },
       ),
