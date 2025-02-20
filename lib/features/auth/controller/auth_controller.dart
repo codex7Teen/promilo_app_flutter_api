@@ -64,7 +64,7 @@ class AuthController extends GetxController {
       log('CONTROL: TOKEN SAVE SUCCESS. TOKEN: ${loginResponse.accessToken}');
 
       // Navigate to home screen on login success and also show snackbar
-      Get.offAll(() => MainBottomNavigaton());
+      Get.offAll(() => MainBottomNavigation(), transition: Transition.fadeIn);
       Get.snackbar("Login Success", "Successfully Logged In... 🎉🎉🎉",
           snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.white);
     } else {

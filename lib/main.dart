@@ -28,6 +28,6 @@ class MyApp extends StatelessWidget {
               ColorScheme.fromSeed(seedColor: AppColors.darkBlueThemeColor),
           useMaterial3: true,
         ),
-        home: isLoggedIn ? MainBottomNavigaton() : ScreenLogin());
+        home: isLoggedIn ? MainBottomNavigation() : ScreenLogin());
   }
 }

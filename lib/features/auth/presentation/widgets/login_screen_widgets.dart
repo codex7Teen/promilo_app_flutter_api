@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:promilo_flutter_app/core/config/app_colors.dart';
 import 'package:promilo_flutter_app/core/config/app_text_styles.dart';

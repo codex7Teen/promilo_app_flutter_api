@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:promilo_flutter_app/core/config/app_colors.dart';
 import 'package:promilo_flutter_app/core/config/app_text_styles.dart';
 import 'package:promilo_flutter_app/core/navigation/main_bottom_navigaton.dart';
@@ -36,10 +37,13 @@ class HomeScreenWidgets {
         ),
         leading: Padding(
           padding: const EdgeInsets.only(left: 10, top: 10),
-          child: Icon(
-            Icons.arrow_back_ios_new_rounded,
-            size: 19,
-            color: AppColors.darkBlueThemeColor,
+          child: GestureDetector(
+            onTap: () => Get.back(),
+            child: Icon(
+              Icons.arrow_back_ios_new_rounded,
+              size: 19,
+              color: AppColors.darkBlueThemeColor,
+            ),
           ),
         ));
   }
@@ -247,7 +251,8 @@ class HomeScreenWidgets {
           return GestureDetector(
             onTap: () =>
                 // Displaying on the body of bottomnavbar to preserve the bottomnavbar.
-                Get.to(MainBottomNavigaton(child: ScreenDescription())),
+                PersistentNavBarNavigator.pushNewScreen(context,
+                    screen: ScreenDescription()),
             child: Container(
                 width: MediaQuery.sizeOf(context).width * 0.4,
                 margin: EdgeInsets.only(right: 20),
