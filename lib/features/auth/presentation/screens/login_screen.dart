@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:promilo_flutter_app/core/config/app_colors.dart';
@@ -33,8 +31,7 @@ class ScreenLogin extends StatelessWidget {
               LoginScreenWidgets.buildSignInText(),
               SizedBox(height: 6),
               //! EMAIL INPUT FIELD
-              LoginScreenWidgets.buildEmailField(
-                  authController.emailController,
+              LoginScreenWidgets.buildEmailField(authController.emailController,
                   (value) => authController.updateEmail(value)),
               SizedBox(height: 6),
               //! SIGN IN WITH OTP TEXT
@@ -67,7 +64,7 @@ class ScreenLogin extends StatelessWidget {
               //! LOGIN & SIGNUP TEXT
               LoginScreenWidgets.buildLoginAndSignupText(),
               SizedBox(height: 28),
-          
+
               LoginScreenWidgets.builAgreeText(),
               LoginScreenWidgets.buildAgreeSecondText()
             ],

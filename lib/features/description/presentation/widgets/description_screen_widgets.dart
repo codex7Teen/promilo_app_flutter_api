@@ -121,6 +121,7 @@ class DescriptionScreenWidgets {
                       'assets/images/descr_image_5-removebg-preview.png',
                       width: 20),
                   GestureDetector(
+                    onTap: () => descriptionScreenController.shareContent(),
                     child: Image.asset(
                         'assets/images/descr_image_6-removebg-preview.png',
                         width: 17),

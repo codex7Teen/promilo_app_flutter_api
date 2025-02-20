@@ -1,16 +1,15 @@
+// AUTH SERVICES
 import 'dart:convert';
 import 'dart:developer';
 import 'package:crypto/crypto.dart';
 import 'package:promilo_flutter_app/data/models/login_model.dart';
 import 'package:http/http.dart' as http;
 
-//! AUTH SERVICES
 class AuthServices {
   static const String _baseUrl = "https://api.promilo.com/user/oauth/token";
-  static const String _authHeaderValue =
-      "Basic UHJvbWlsbzpxNCE1NkBaeSN4MiRHQg==";
+  static const String _authHeaderValue = "Basic UHJvbWlsbzpxNCE1NkBaeSN4MiRHQg==";
 
-  // Fuction to convert password to SHA256
+  // Function to convert password to SHA256
   static String hashPassword(String password) {
     return sha256.convert(utf8.encode(password)).toString();
   }
@@ -19,30 +18,33 @@ class AuthServices {
   static Future<LoginModel?> loginUser(String email, String password) async {
     try {
       final hashedPassword = hashPassword(password);
-      // header
       var headers = {
         "Authorization": _authHeaderValue,
         "Content-Type": "application/x-www-form-urlencoded"
       };
-      // body
       var body = {
         "username": email,
         "password": hashedPassword,
         "grant_type": "password"
       };
-      // response
-      var response =
-          await http.post(Uri.parse(_baseUrl), headers: headers, body: body);
+
+      var response = await http.post(Uri.parse(_baseUrl), headers: headers, body: body);
+      log('Response Status Code: ${response.statusCode}');
 
       if (response.statusCode == 200) {
-        log('Services: Response 200 success');
         return LoginModel.fromJson(json.decode(response.body));
+      } else if (response.statusCode == 400) {
+        throw "Invalid email or password";
+      } else if (response.statusCode == 401) {
+        throw "Unauthorized: Invalid credentials";
+      } else if (response.statusCode == 500) {
+        throw "Server error. Please try again later.";
       } else {
-        log('Services: Response error ${response.statusCode}');
-        return null;
+        throw "Unexpected error: ${response.statusCode}";
       }
     } catch (error) {
-      throw Exception("Error: Failed to get data");
+      throw "Unknown error. Make sure id and password is correct.";
     }
   }
 }
+ 
