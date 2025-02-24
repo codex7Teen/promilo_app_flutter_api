@@ -16,6 +16,9 @@ This Flutter project implements a login system with GetX for state management. I
 - **Description Screen**
   - Displays at least three images.
   - Includes a share icon to open the default mobile share options.
+- **Network Stability**
+  - Automatically checks for network connection stability.
+  - Displays a warning and retry option if the connection gets interrupted.
 
 ## Tech Stack
 
@@ -28,7 +31,7 @@ This Flutter project implements a login system with GetX for state management. I
 
 1. Clone the repository:
    ```sh
-   git clone <repo-url>
+   git clone https://github.com/codex7Teen/promilo_app_flutter_api
    ```
 2. Navigate to the project directory:
    ```sh
@@ -56,4 +59,3 @@ Feel free to fork and submit pull requests.
 ## License
 
 This project is licensed under the MIT License.
-
