@@ -1,16 +1,59 @@
-# promilo_flutter_app
+# Flutter Login UI with GetX State Management
 
-A new Flutter project.
+This Flutter project implements a login system with GetX for state management. It includes validation, API integration, and navigation across three screens.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- **Login Screen**
+  - Email and password validation.
+  - SHA256 encryption for password security.
+  - API call for authentication.
+  - Error handling with appropriate messages.
+- **Home Screen**
+  - Displays images and scrollable cards.
+  - Minimum of five scrollable items.
+  - Clicking an item navigates to the description screen.
+- **Description Screen**
+  - Displays at least three images.
+  - Includes a share icon to open the default mobile share options.
 
-A few resources to get you started if this is your first Flutter project:
+## Tech Stack
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Flutter** (Frontend UI)
+- **GetX** (State Management)
+- **Dio** (HTTP Requests)
+- **SHA256 Encryption** (Password Security)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Installation
+
+1. Clone the repository:
+   ```sh
+   git clone <repo-url>
+   ```
+2. Navigate to the project directory:
+   ```sh
+   cd flutter_login_ui
+   ```
+3. Install dependencies:
+   ```sh
+   flutter pub get
+   ```
+4. Run the application:
+   ```sh
+   flutter run
+   ```
+
+## API Integration
+
+- Uses a `POST` request to authenticate users.
+- Sends email and SHA256-encrypted password as `FormData`.
+- Implements proper error handling for invalid credentials.
+
+## Contribution
+
+Feel free to fork and submit pull requests.
+
+## License
+
+This project is licensed under the MIT License.
+
