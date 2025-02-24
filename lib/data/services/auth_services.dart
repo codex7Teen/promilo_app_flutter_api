@@ -4,10 +4,12 @@ import 'dart:developer';
 import 'package:crypto/crypto.dart';
 import 'package:promilo_flutter_app/data/models/login_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:promilo_flutter_app/data/models/login_request_model.dart';
 
 class AuthServices {
   static const String _baseUrl = "https://api.promilo.com/user/oauth/token";
-  static const String _authHeaderValue = "Basic UHJvbWlsbzpxNCE1NkBaeSN4MiRHQg==";
+  static const String _authHeaderValue =
+      "Basic UHJvbWlsbzpxNCE1NkBaeSN4MiRHQg==";
 
   // Function to convert password to SHA256
   static String hashPassword(String password) {
@@ -22,13 +24,13 @@ class AuthServices {
         "Authorization": _authHeaderValue,
         "Content-Type": "application/x-www-form-urlencoded"
       };
-      var body = {
-        "username": email,
-        "password": hashedPassword,
-        "grant_type": "password"
-      };
 
-      var response = await http.post(Uri.parse(_baseUrl), headers: headers, body: body);
+      // creating the login body
+      LoginRequestModel loginRequest = LoginRequestModel(
+          username: email, password: hashedPassword, grantType: "password");
+
+      var response = await http.post(Uri.parse(_baseUrl),
+          headers: headers, body: loginRequest.toMap());
       log('Response Status Code: ${response.statusCode}');
 
       if (response.statusCode == 200) {
@@ -47,4 +49,3 @@ class AuthServices {
     }
   }
 }
- 
