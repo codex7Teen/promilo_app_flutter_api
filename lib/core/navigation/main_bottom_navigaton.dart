@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:promilo_flutter_app/core/config/app_colors.dart';
+import 'package:promilo_flutter_app/core/navigation/screen_sample.dart';
 import 'package:promilo_flutter_app/features/home/presentation/screen/home_screen.dart';
 
 class MainBottomNavigation extends StatefulWidget {
@@ -16,7 +17,8 @@ class _MainBottomNavigationState extends State<MainBottomNavigation> {
 
   List<Widget> _buildScreens() {
     return [
-      Container(color: Colors.red), // Placeholder for Prolet screen
+      ScrrenSample(),
+      // Container(color: Colors.red), // Placeholder for Prolet screen
       Container(color: Colors.green), // Placeholder for Meetup screen
       ScreenHome(),
       Container(color: Colors.blue), // Placeholder for Explore screen
